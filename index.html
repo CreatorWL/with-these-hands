@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>With These Hands | Massage Therapy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;1,6..12,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="#hero">With These Hands</a>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Open menu"
+        >
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="nav__list" id="nav-menu">
+          <li><a class="nav__link" href="#about">About</a></li>
+          <li><a class="nav__link" href="#services">Services</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="band band--surface hero" id="hero" aria-labelledby="hero-heading">
+        <div class="hero__inner">
+          <h1 class="visually-hidden" id="hero-heading">With These Hands</h1>
+          <img
+            class="hero__logo"
+            src="logo.jpeg"
+            alt=""
+            width="280"
+            height="120"
+          />
+          <p class="hero__tagline">
+            Calm, attentive bodywork in a peaceful space.
+          </p>
+          <p class="hero__eyebrow">Massage therapy</p>
+        </div>
+      </section>
+
+      <div class="band band--muted image-strip" role="presentation">
+        <figure class="image-slot">
+          <span class="image-slot__label">[PLACEHOLDER]</span>
+          <figcaption class="visually-hidden">[PLACEHOLDER]</figcaption>
+        </figure>
+      </div>
+
+      <section
+        class="band band--surface section section--about"
+        id="about"
+        aria-labelledby="about-heading"
+      >
+        <div class="section__inner">
+          <h2 class="section__title" id="about-heading">About me</h2>
+          <div class="about__content">
+            <p class="about__text">[PLACEHOLDER]</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="band band--wash image-strip image-strip--narrow" role="presentation">
+        <figure class="image-slot image-slot--small">
+          <span class="image-slot__label">[PLACEHOLDER]</span>
+          <figcaption class="visually-hidden">[PLACEHOLDER]</figcaption>
+        </figure>
+      </div>
+
+      <section
+        class="band band--surface section section--services"
+        id="services"
+        aria-labelledby="services-heading"
+      >
+        <div class="section__inner">
+          <h2 class="section__title" id="services-heading">Services</h2>
+          <p class="section__intro">
+            Treatments are tailored to you. More offerings may be added here as
+            your practice grows.
+          </p>
+          <div class="services-grid">
+            <article class="service-card">
+              <h3 class="service-card__title">Facial Massage</h3>
+              <p class="service-card__text">
+                Gentle, restorative work for the face, jaw, and neck — easing
+                tension and encouraging circulation for a refreshed, grounded
+                feeling.
+              </p>
+            </article>
+            <!-- Additional service cards can be added alongside this one -->
+          </div>
+        </div>
+      </section>
+
+      <div class="band band--muted image-strip" role="presentation">
+        <figure class="image-slot">
+          <span class="image-slot__label">[PLACEHOLDER]</span>
+          <figcaption class="visually-hidden">[PLACEHOLDER]</figcaption>
+        </figure>
+      </div>
+
+      <section
+        class="band band--wash section section--contact"
+        id="contact"
+        aria-labelledby="contact-heading"
+      >
+        <div class="section__inner section__inner--contact">
+          <h2 class="section__title" id="contact-heading">Contact</h2>
+          <div class="contact__block">
+            <p class="contact__line">
+              <span class="contact__label">Phone</span>
+              <span class="contact__value">[PLACEHOLDER]</span>
+            </p>
+            <p class="contact__line">
+              <span class="contact__label">Email</span>
+              <span class="contact__value">[PLACEHOLDER]</span>
+            </p>
+            <p class="contact__line">
+              <span class="contact__label">Location</span>
+              <span class="contact__value">[PLACEHOLDER]</span>
+            </p>
+            <p class="contact__line contact__line--full">
+              <span class="contact__label">Hours &amp; notes</span>
+              <span class="contact__value">[PLACEHOLDER]</span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="band band--deep site-footer">
+      <p class="site-footer__text">
+        © <span id="year"></span> With These Hands · [PLACEHOLDER]
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
