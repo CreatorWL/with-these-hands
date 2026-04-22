@@ -35,7 +35,7 @@
   }
 
   function setActiveNav() {
-    var sections = ["hero", "about", "services", "contact"];
+    var sections = ["hero", "about", "hfr", "pricing", "contact"];
     var scrollPos = window.scrollY + 120;
 
     var activeId = "hero";
@@ -51,7 +51,10 @@
     navLinks.forEach(function (link) {
       var hash = (link.getAttribute("href") || "").replace(/^#/, "");
       var match =
-        (hash === "about" || hash === "services" || hash === "contact") &&
+        (hash === "about" ||
+          hash === "hfr" ||
+          hash === "pricing" ||
+          hash === "contact") &&
         hash === activeId;
       link.classList.toggle("is-active", match);
     });

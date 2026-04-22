@@ -33,12 +33,19 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+}
+
+main {
+  display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -52,10 +59,12 @@ body {
   background-color: var(--color-bg-surface);
 }
 
-/* Full-width bands (Itika-style horizontal strips) */
+/* Full-width bands — background always spans the viewport */
 .band {
   width: 100%;
+  max-width: none;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .band--surface {
@@ -260,6 +269,9 @@ section[id] {
 .hero {
   padding: var(--space-lg) var(--space-md) var(--space-xl);
   text-align: center;
+  /* Ensure the hero strip paints edge-to-edge */
+  width: 100%;
+  max-width: none;
 }
 
 .hero__inner {
@@ -298,9 +310,18 @@ section[id] {
 /* ——— Image strips ——— */
 
 .image-strip {
+  /* Full-width band; do not cap width here or the background looks like a “box” */
+  max-width: none;
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  display: grid;
+  gap: var(--space-md);
+}
+
+.image-strip .image-slot {
   max-width: 72rem;
-  margin: 0 auto;
-  padding: var(--space-md) var(--space-md) var(--space-lg);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image-strip--narrow {
@@ -312,31 +333,55 @@ section[id] {
   margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 21 / 9;
-  background: linear-gradient(
-    145deg,
-    rgba(74, 155, 168, 0.12) 0%,
-    rgba(139, 96, 64, 0.08) 100%
-  );
-  border: 1px dashed rgba(44, 107, 112, 0.25);
+  aspect-ratio: 4 / 5;
+  background: rgba(74, 155, 168, 0.08);
+  border: 1px solid rgba(44, 107, 112, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.image-slot--small {
-  aspect-ratio: 16 / 5;
-  max-width: 42rem;
+.image-strip--portrait {
+  max-width: 58rem;
+  margin-inline: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.image-strip--wide {
+  grid-template-columns: 1fr;
+  max-width: none;
+}
+
+.image-slot--portrait {
+  width: 100%;
+  max-width: 24rem;
   margin-inline: auto;
 }
 
-.image-slot__label {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-teal-dark);
-  opacity: 0.65;
+.image-slot--wide {
+  width: 100%;
+  max-width: 72rem;
+  aspect-ratio: 21 / 9;
+}
+
+.image-slot__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.image-slot__image--focus-upper {
+  object-position: center 24%;
+}
+
+.image-slot__image--focus-center {
+  object-position: center 50%;
+}
+
+.image-slot__image--focus-lower {
+  object-position: center 60%;
 }
 
 /* ——— Sections ——— */
@@ -377,47 +422,61 @@ section[id] {
   font-size: 1.0625rem;
   font-weight: 300;
   color: var(--color-text);
-  margin: 0;
-  text-align: center;
+  margin: 0 0 var(--space-md);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
-/* ——— Services grid ——— */
+.section--about .about__text:last-child {
+  margin-bottom: 0;
+}
 
-.services-grid {
+.section--hfr .about__text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 42rem) {
+  .image-strip--portrait {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+  }
+
+  .image-slot--wide {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ——— Pricing ——— */
+
+.pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space-md);
-  align-items: stretch;
 }
 
-.service-card {
+.pricing-card {
   background: var(--color-white);
   border-radius: var(--radius);
-  padding: var(--space-md) var(--space-md);
-  box-shadow: var(--shadow-soft);
+  padding: var(--space-md);
+  text-align: center;
   border: 1px solid rgba(74, 155, 168, 0.15);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-soft);
 }
 
-.service-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 24px 48px rgba(44, 107, 112, 0.1);
-}
-
-.service-card__title {
+.pricing-card__title {
+  margin: 0 0 var(--space-xs);
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 500;
   color: var(--color-brown);
-  margin: 0 0 var(--space-sm);
 }
 
-.service-card__text {
+.pricing-card__price {
   margin: 0;
-  font-size: 0.98rem;
-  font-weight: 300;
-  color: var(--color-text-muted);
-  line-height: 1.7;
+  font-size: 1.05rem;
+  color: var(--color-teal-dark);
+  font-weight: 600;
 }
 
 /* ——— Contact ——— */
